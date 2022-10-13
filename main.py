@@ -10,6 +10,20 @@ from typing import List
 
 app = FastAPI()
 
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def get_balances(Request, chain, address):
     url = f"https://v2.unifront.io/v2/{chain}/address/{address}/balances"
