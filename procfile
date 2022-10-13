@@ -1,1 +1,1 @@
-web: gunicorn -w k -4 unicorn.workers.UvicornWorker myapp:app
+web: gunicorn -w k -4 unicorn.workers.UvicornWorker test_sse:app
