@@ -24,7 +24,7 @@ def get_balances(Request, chain, address):
 Balance_details = {}
 
 #API to send the success response
-@app.post("/response/")
+@app.post("/")
 async def root(request: Request):
     response = {}
     data = await request.json()
