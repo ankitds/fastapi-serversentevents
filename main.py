@@ -50,7 +50,7 @@ RETRY_TIMEOUT = 1500
 
 
 #API to generate events and streamed data
-@app.get('/stream/data')
+@app.get('/stream/data/')
 async def message_stream(request: Request):
 
     async def event_generator():
