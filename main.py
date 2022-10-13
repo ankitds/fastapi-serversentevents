@@ -1,7 +1,5 @@
 import asyncio
 from multiprocessing import Event
-from tkinter.tix import Balloon
-from urllib import response
 import uvicorn
 from fastapi import FastAPI, Request
 from sse_starlette.sse import EventSourceResponse
@@ -50,7 +48,6 @@ RETRY_TIMEOUT = 1500
 #API to generate events and streamed data
 @app.get('/stream/data/')
 async def message_stream(request: Request):
-
     async def event_generator():
         # while True:
             # if await request.is_disconnected():
