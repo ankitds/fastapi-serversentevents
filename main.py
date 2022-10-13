@@ -40,8 +40,6 @@ async def root(request: Request):
         print("rresult",Balance)
         Balance_details['balance'] = Balance
         events = message_stream(Request)
-        if events != Balloon:
-            pass
     return response
 
 
