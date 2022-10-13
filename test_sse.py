@@ -20,11 +20,15 @@ def get_balances(Request, chain, address):
     data = response.json()
     return data
 
-
+@app.get("/")
+async def root(request: Request):
+    return {"Home Page" : ""}
+    
+    
 Balance_details = {}
 
 #API to send the success response
-@app.post("/")
+@app.post("/response/")
 async def root(request: Request):
     response = {}
     data = await request.json()
@@ -47,7 +51,7 @@ RETRY_TIMEOUT = 1500
 
 
 #API to generate events and streamed data
-@app.get('/stream/data')
+@app.get('/stream/data/')
 async def message_stream(request: Request):
 
     async def event_generator():
