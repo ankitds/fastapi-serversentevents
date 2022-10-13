@@ -15,14 +15,17 @@ app = FastAPI()
 
 def get_balances(Request, chain, address):
     url = f"https://v2.unifront.io/v2/{chain}/address/{address}/balances"
-    
     response = requests.get(url = url)
     data = response.json()
     return data
 
 
-Balance_details = {}
+@app.get("/")
+async def root(request: Request):
+    response = {"Page" : "home_page"}
+    return response
 
+Balance_details = {}
 #API to send the success response
 @app.post("/response/")
 async def root(request: Request):
