@@ -1,1 +1,1 @@
-web: gunicorn -w k -4 unicorn.workers.UvicornWorker test_sse:app
+web uvicorn test_sse:app --host=0.0.0.0 --port=${PORT:-5000}
