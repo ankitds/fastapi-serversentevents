@@ -29,19 +29,23 @@ async def root(request: Request):
     response = {}
     data = await request.json()
     chain,address = data.get("chain"), data.get("address")
-    response['data'] = {"chain" : chain, "address" : address}
-    response['status'] = "200 OK"
     Balance = get_balances(Request, chain, address)
+    if Balance['status_code'] == 200:
+        response['data'] = {"chain" : chain, "address" : address}
+        response['status_code'], response['message'] = 200, "OK"
+        
+    else:
+        response['data'] = Balance
     
     if Balance:
-        print("rresult",Balance)
         Balance_details['balance'] = Balance
         events = message_stream(Request)
     return response
 
 
 STREAM_DELAY = 2  # second
-RETRY_TIMEOUT = 1500 
+RETRY_TIMEOUT = 1500 #millsecond
+print("b_details",Balance_details)
 
 
 #API to generate events and streamed data
