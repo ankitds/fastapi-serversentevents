@@ -57,7 +57,7 @@ async def message_stream(request: Request):
             #     break  
         if Balance_details:
             yield {
-                    "data": Balance_details
+                    "event": Balance_details
             }
         await asyncio.sleep(STREAM_DELAY)
 
